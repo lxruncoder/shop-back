@@ -47,22 +47,65 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
-    }]
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/dashboard/index'),
+        meta: { title: '首页', icon: 'dashboard' }
+      }
+    ]
+  },
+  // 路由的配置
+  {
+    path: '/product', // 路径为porduct,product作为一个一级路由,但是没有需要显示的组件,展示的是Layout组件
+    name: 'Product',
+    component: Layout,
+    // 配置重定向路由
+    redirect:'/product/trademark', 
+    meta: { title: '商品管理', icon: 'el-icon-s-goods' }, // icon图标可以用element-ui提供的图标
+    children: [
+      {
+        path: 'trademark',
+        name: 'Trademark',
+        component: () => import('@/views/product/trademark/List'),
+        meta: { title: '品牌管理' } // 二级路由就不需要图标了
+      },
+      {
+        path: 'attr',
+        name: 'Attr',
+        component: () => import('@/views/product/attr/List'),
+        meta: { title: '属性管理' } // 二级路由就不需要图标了
+      },
+      {
+        path: 'sku',
+        name: 'Sku',
+        component: () => import('@/views/product/sku/List'),
+        meta: { title: 'SKU管理' } // 二级路由就不需要图标了
+      },
+      {
+        path: 'spu',
+        name: 'Spu',
+        component: () => import('@/views/product/spu/List'),
+        meta: { title: 'SPU管理' } // 二级路由就不需要图标了
+      },
+      // 重定向路由的另一种配置方式,在二级路由内部配置,path为空字符串,当访问一级路由的时候,检查二级路由没有匹配到最后匹配到一个空,就重定向到trademark
+      /* {
+        path:'',
+        redirect:'trademark'
+      } */
+    ]
   },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-const createRouter = () => new Router({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
+const createRouter = () =>
+  new Router({
+    // mode: 'history', // require service support
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
+  })
 
 const router = createRouter()
 
