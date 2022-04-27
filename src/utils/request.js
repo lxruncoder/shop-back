@@ -8,7 +8,7 @@ const service = axios.create({
   // 这里读取到的就是开发环境.env.development文件,将每个请求追加/dev-api前缀,有前缀就走代理,然后在请求具体资源的时候再将前缀去掉
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 5000 // request timeout
+  timeout: 50000 // request timeout
 })
 
 // request interceptor

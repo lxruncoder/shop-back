@@ -62,7 +62,7 @@ export const constantRoutes = [
     name: 'Product',
     component: Layout,
     // 配置重定向路由
-    redirect:'/product/trademark', 
+    redirect: '/product/trademark',
     meta: { title: '商品管理', icon: 'el-icon-s-goods' }, // icon图标可以用element-ui提供的图标
     children: [
       {
@@ -88,7 +88,7 @@ export const constantRoutes = [
         name: 'Spu',
         component: () => import('@/views/product/spu/List'),
         meta: { title: 'SPU管理' } // 二级路由就不需要图标了
-      },
+      }
       // 重定向路由的另一种配置方式,在二级路由内部配置,path为空字符串,当访问一级路由的时候,检查二级路由没有匹配到最后匹配到一个空,就重定向到trademark
       /* {
         path:'',

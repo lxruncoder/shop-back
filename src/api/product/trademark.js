@@ -7,14 +7,14 @@ export default {
   },
   // 添加和修改品牌共用一个函数
   addOrUpdate(trademark) {
-    if(trademark.id) {
-      return request.put('/admin/product/baseTrademark/update',trademark)
-    }else {
-      return request.post('/admin/product/baseTrademark/save',trademark)
+    if (trademark.id) {
+      return request.put('/admin/product/baseTrademark/update', trademark)
+    } else {
+      return request.post('/admin/product/baseTrademark/save', trademark)
     }
   },
   // 获取分页列表
-  getPageList(page,limit) {
+  getPageList(page, limit) {
     return request.get(`/admin/product/baseTrademark/${page}/${limit}`)
   }
 }

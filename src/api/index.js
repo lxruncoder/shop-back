@@ -1,9 +1,9 @@
-export {default as trademark} from './product/trademark'
-export {default as attr} from './product/attr'
-export {default as sku} from './product/sku'
-export {default as spu} from './product/spu'
+export { default as trademark } from './product/trademark'
+export { default as attr } from './product/attr'
+export { default as sku } from './product/sku'
+export { default as spu } from './product/spu'
 
-/* 
+/*
   第一步引入:这里不能使用简写方式
     import {default as trademark} from 'xxx.js'
     就相当于得到了trademark文件默认暴露出的对象,即default后面的内容,如下
