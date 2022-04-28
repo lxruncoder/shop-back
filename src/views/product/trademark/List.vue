@@ -55,7 +55,7 @@
       :visible.sync="dialogFormVisible"
     >
       <!-- style指定form部分的大小,model表示收集数据的对象 -->
-      <el-form ref="tmForm" :model="tmForm" style="width: 80%" :rules="rules">
+      <el-form ref="tmF" :model="tmForm" style="width: 80%" :rules="rules">
         <!-- label-width指定标题部分的大小,要带有单位 -->
         <el-form-item label="品牌名称" label-width="100px" prop="tmName">
           <!-- 将input输入的数据收到的tmFrom中的tmName中,这里的名称是固定的,因为后台就需要包含tmName和logoUrl的对象 -->
@@ -94,7 +94,6 @@ export default {
     var validataTmName = (rule, value, callback) => {
       // 如果点击添加之后,点击取消,再次点击添加这里会自动执行,value为undefined,会报错,所以如果value有值才进行校验
       if (value) {
-        console.log(value)
         if (value.length < 2 || value.length > 10) {
           // 没通过校验给出的提示
           callback(new Error('长度必须在2-10之间'))
@@ -131,7 +130,7 @@ export default {
           { validator: validataTmName, trigger: 'change' }
         ],
         // 这个验证规则,需要的触发时机是整体校验的时候
-        logoUrl: [{ required: true, message: '请选择需要上传的图片' }]
+        logoUrl: [{ required: true, message: '请选择需要上传的图片',trigger:'change'}]
       }
     }
   },
@@ -199,7 +198,7 @@ export default {
     },
     // 点击确认按钮真正添加或者修改品牌
     addOrUpdate() {
-      this.$refs.tmForm.validate(async(valid) => {
+      this.$refs.tmF.validate(async(valid) => {
         if (valid) {
           try {
             await this.$API.trademark.addOrUpdate(this.tmForm)
