@@ -2,7 +2,7 @@
   <div>
     <!-- 三级连动 -->
     <el-card>
-      <CategorySelector @changeCategory="changeCategory" />
+      <CategorySelector @changeCategory="changeCategory" :isShowList="isShowList" />
     </el-card>
     <el-card style="margin-top: 20px">
       <div v-show="isShowList">

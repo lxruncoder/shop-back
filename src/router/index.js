@@ -78,17 +78,18 @@ export const constantRoutes = [
         meta: { title: '属性管理' } // 二级路由就不需要图标了
       },
       {
+        path: 'spu',
+        name: 'Spu',
+        component: () => import('@/views/product/spu/List'),
+        meta: { title: 'SPU管理' } // 二级路由就不需要图标了
+      },
+      {
         path: 'sku',
         name: 'Sku',
         component: () => import('@/views/product/sku/List'),
         meta: { title: 'SKU管理' } // 二级路由就不需要图标了
       },
-      {
-        path: 'spu',
-        name: 'Spu',
-        component: () => import('@/views/product/spu/List'),
-        meta: { title: 'SPU管理' } // 二级路由就不需要图标了
-      }
+
       // 重定向路由的另一种配置方式,在二级路由内部配置,path为空字符串,当访问一级路由的时候,检查二级路由没有匹配到最后匹配到一个空,就重定向到trademark
       /* {
         path:'',

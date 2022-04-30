@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-form :inline="true" :model="attrForm">
+    <!-- isShowList为false,则添加属性显示,这个时候要保证这里为true就能禁用三级分类 -->
+    <el-form :inline="true" :model="attrForm" :disabled="!isShowList">
       <el-form-item label="一级分类">
         <el-select v-model="attrForm.category1Id" placeholder="请选择" @change="changeCategory1">
           <!-- value是要被收集到v-model指定的内容,label是要显示的文字 -->
@@ -25,6 +26,7 @@
 <script>
 export default {
   name: 'CategorySelector',
+  props:['isShowList'],
   data() {
     return {
       attrForm: {
